@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Page</title>
+  <link rel="stylesheet" href="order.css">
+    <link rel="icon" type="image/x-icon" href="Images/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="logo">
+    <img src="Images/Logo.png" alt="Logo-Image" width="150px">
+  </div>
+  <div class="navbar">
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="">Order</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </nav>
+    <img src="Images/cart.png" width="30px" height="30px" alt="Cart-Image">
+  </div>
+  <div class="content">
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Decription</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      
+      <tr>
+        <td>Mackbook Air 13-inch | Apple M2 Chip</td>
+        <td>
+          <ul>
+            <li>
+              <strong>Apple M2 Chip</strong>: The M2 chip's CPU combines high-performance and energy-efficient cores for snappy responsiveness and extended battery life.
+            </li>
+            <li>
+              <strong>13-inch Retina Display</strong>: Features a stunning Retina display with vibrant colors and sharp details for an immersive visual experience.
+            </li>
+            <li>
+              <strong>Ideal for Students and Professionals</strong>: Perfect for a wide range of tasks, from studying and content creation to entertainment and everyday computing.
+            </li>
+          </ul>  
+        </td>
+        <td>R31,000.00</td>
+        <td><input type="number" name ="laptopQuantity" value="0" min="0"></td>
+      </tr>
+      
+      <tr>
+        <td>Apple Headphone | Max Bluetooth</td>
+        <td>
+          <ul>
+            <li><strong>Active Noise Cancellation</strong>: Provides exceptional noise cancellation for an uninterrupted listening experience.</li>
+            <li>
+              <strong>Sleek Design</strong>: Boasts a premium design with comfortable ear cushions for long listening sessions.
+            </li>
+            <li>
+              <strong>Immersive Sound</strong>: Offers a truly immersive audio experience with custom-designed drivers and spatial audio.
+            </li>
+          </ul>
+        </td>
+        <td>R13,500.00</td>
+        <td><input type="number" name="laptopQuantity" value="0" min="0"></td>
+      </tr>
+
+      <tr>
+        <td>Apple Smartwatch | T500 S8</td>
+        <td>
+          <ul>
+            <li>
+              <strong>Customizable Display</strong>: Offers a vibrant touchscreen display for notifications and apps.
+            </li>
+            <li>
+              <strong>Stylish Design</strong>: Boasts a stylish and customizable design with various watch faces and bands.
+            </li>
+            <li>
+              <strong>Health Tracking</strong>: Monitors heart rate, steps, and sleep patterns for comprehensive fitness insights.
+
+            </li>
+          </ul>
+        </td>
+        <td>R5,000.00</td>
+        <td><input type="number" name="laptopQuantity" value="0" min="0"></td>
+      </tr>
+
+      <tr>
+        <td>Razer Orochi v2 | Wireless Mouse</td>
+        <td>
+          <ul>
+            <li>
+              <strong>Precision Gaming</strong>: Equipped with a high-precision optical sensor for precise gaming performance
+            </li>
+            <li>
+              <strong>Ambidextrous Design</strong>: Designed for comfort and versatility, suitable for various grip styles.
+
+            </li>
+            <li>
+              <strong>Long Battery Life</strong>: Ensures extended gaming sessions without frequent recharging.
+            </li>
+          </ul>
+        </td>
+        <td>R1,390.00</td>
+        <td><input type="number" name="laptopQuantity" value="0" min="0"></td>
+      </tr>
+    </table>
+    <button id="submitOrder" onclick="myFunction()">Submit Order</button>
+  </div>
+  
+  <script>
+   function myFunction() {
+    alert ("The order has been placed");
+   }
+  </script>
+</body>
+</html>
