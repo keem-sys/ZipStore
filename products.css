@@ -9,12 +9,13 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     background: radial-gradient( #de6262, #6dd5ed);
-
 }
 .navbar {
     display: flex;
     align-items: center;
     padding: 20px;
+    margin-top: -150px;
+    font-size: 18px;
 }
 
 nav {
@@ -30,6 +31,24 @@ nav, ul {
 nav ul li {
     display: inline-block;
     margin-right: 20px;
+    position: relative;
+}
+nav ul li::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #000000;
+    transform: scaleX(0);
+    transition: transform 0.5s ease-in-out;
+}
+nav ul li:hover::after {
+    transform: scaleX(1);
+}
+.content {
+    margin-top: 150px;
 }
 a {
     text-decoration: none;
