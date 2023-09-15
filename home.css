@@ -242,6 +242,7 @@ small {
     color: #8a8a8a;
     font-size: 15px;
     padding: 60px 0 20px;
+    
 }
 .footer p {
     color: #8a8a8a;
@@ -269,9 +270,7 @@ small {
     flex-basis: 12%;
     text-align: center;
 }
-ul {
-    list-style-type: none;
-}
+
 .app-logo {
     margin-top: 25px;
     
@@ -287,12 +286,7 @@ ul {
     text-align: center;
 
 }
-.menu-icon {
-    width: 30px;
-    height: 30px;
-    margin-left: 20px;
-    display: none;
-}
+
 /*----Media Query For Menu-------*/
 @media only screen and (max-width: 800px){
     nav ul {

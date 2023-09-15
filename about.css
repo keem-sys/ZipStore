@@ -8,7 +8,8 @@ html {
 }
 body {
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient( #de6262, #6dd5ed);
+    background-image: url(Images/background-05.jpg);
+    background-position: contain;
 }
 .navbar {
     display: flex;
