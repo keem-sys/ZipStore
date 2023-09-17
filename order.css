@@ -67,7 +67,7 @@ table th, table td {
   border:  1px solid black;
 }
 table {
-  width: 900px;
+  width: 100%;
   border-collapse: collapse;
   margin: 0 20px;
   
