@@ -47,9 +47,6 @@ nav ul li::after {
 nav ul li:hover::after {
     transform: scaleX(1);
 }
-.content {
-    margin-top: 120px;
-}
 a {
     text-decoration: none;
     color: #000000;
