@@ -1,10 +1,10 @@
 ********************************************
-**        Website Design README           **
+**        Ecommerce Website Design README           **
 ********************************************
 
-Design Choices for ZipStore
+Design Choices for ZipStore(a ecommerce website)
 
-In this README file, we'll walk you through the design choices made for our website ZipStore. These design decisions were carefully considered to create an engaging and visually appealing user experience.
+In this README file, we'll walk you through the design choices made for our ecommerce website ZipStore.
 
 1. **Scroll-Behavior: Smooth:**
    - `html { scroll-behavior: smooth; }`
@@ -92,11 +92,5 @@ to create an engaging and visually appealing user experience.
    - `.container-contact { border-radius: 5px; padding: 20px; }`
    Containers are styled with a border-radius of 5px and padding for a pleasing and organized layout.
 
-
-We believe that these design choices contribute to an engaging and user-friendly website experience. If you have any questions or feedback, please don't hesitate to contact us.
-
-Thank you for visiting [Your Website Name]!
-
-EBENEZER KOUAKOU
 
 ********************************************
