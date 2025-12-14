@@ -1,5 +1,9 @@
 package zipstore.backend.controller;
 
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import zipstore.backend.dto.LoginRequest;
 import zipstore.backend.dto.RegisterRequest;
 import zipstore.backend.entity.User;
 import zipstore.backend.repository.UserRepository;
@@ -7,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import zipstore.backend.security.JwtUtils;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -15,6 +20,8 @@ public class AuthController {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtUtils jwtUtils;
 
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
@@ -32,5 +39,22 @@ public class AuthController {
         userRepository.save(user);
 
         return ResponseEntity.ok("User registered successfully");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.email(), request.password())
+        );
+
+        User user = userRepository.findByEmail(request.email()).orElseThrow();
+
+        if (authentication.isAuthenticated()) {
+            String token = jwtUtils.generateToken(user);
+            return ResponseEntity.ok(token);
+        } else {
+            return ResponseEntity.status(401).body("Invalid Credentials");
+        }
     }
 }
