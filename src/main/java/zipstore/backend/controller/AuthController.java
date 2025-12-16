@@ -57,4 +57,9 @@ public class AuthController {
             return ResponseEntity.status(401).body("Invalid Credentials");
         }
     }
+
+    @GetMapping("/me")
+    public ResponseEntity<String> getCurrentUser(Authentication authentication) {
+        return ResponseEntity.ok("Hello " + authentication.getName());
+    }
 }
