@@ -40,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             return;
         }
 
-        jwt = authHeader.substring(7); // Remove "Bearer "
+        jwt = authHeader.substring(7);
         userEmail = jwtUtils.extractUsername(jwt);
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
