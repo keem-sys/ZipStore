@@ -1,5 +1,6 @@
 package zipstore.backend.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class OrderController {
     private final UserRepository userRepository;
 
     @PostMapping
-    public ResponseEntity<Order> placeOrder(@RequestBody OrderRequest request,
+    public ResponseEntity<Order> placeOrder(@RequestBody @Valid OrderRequest request,
                                             Authentication authentication) {
         String email = authentication.getName();
         User user = userRepository.findByEmail(email)
