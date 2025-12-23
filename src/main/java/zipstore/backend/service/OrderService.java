@@ -38,6 +38,17 @@ public class OrderService {
             Product product = productRepository.findById(orderItemRequest.productId())
                     .orElseThrow(() -> new RuntimeException("Product Not Found"));
 
+            if (product.getStockQuantity() < orderItemRequest.quantity()) {
+                throw new RuntimeException(
+                        String.format("Insufficient stock for product: %s. Requested: %d, Available: %d",
+                                product.getName(),
+                                orderItemRequest.quantity(),
+                                product.getStockQuantity())
+                );
+            }
+
+            // product.setStockQuantity(product.getStockQuantity() - itemRequest.quantity());
+
             OrderItem orderItem = OrderItem.builder()
                     .order(order)
                     .product(product)

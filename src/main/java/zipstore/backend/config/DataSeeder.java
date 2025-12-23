@@ -22,6 +22,7 @@ public class DataSeeder {
                         .imageUrl("https://placehold.co/600x400")
                         .price(new BigDecimal("299.99"))
                         .category("Accessories")
+                        .stockQuantity(30)
                         .build();
 
                 Product p2 = Product.builder()
@@ -30,6 +31,7 @@ public class DataSeeder {
                         .imageUrl("https://placehold.co/600x400")
                         .price(new BigDecimal("150.50"))
                         .category("Accessories")
+                        .stockQuantity(25)
                         .build();
 
                 productRepository.saveAll(Arrays.asList(p1, p2));
