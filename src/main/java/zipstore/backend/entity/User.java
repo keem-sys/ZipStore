@@ -1,7 +1,9 @@
 package zipstore.backend.entity;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -24,4 +26,8 @@ public class User {
     private String name;
 
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Order> orders;
 }
