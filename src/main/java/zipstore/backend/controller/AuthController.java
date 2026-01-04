@@ -13,50 +13,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import zipstore.backend.security.JwtUtils;
+import zipstore.backend.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtils jwtUtils;
+    private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody @Valid RegisterRequest request) {
-        if (userRepository.existsByEmail(request.email())) {
-            return ResponseEntity.badRequest().body("Email is already in use");
-        }
-
-        User user = User.builder()
-                .name(request.name())
-                .email(request.email())
-                .password(passwordEncoder.encode(request.password()))
-                .role("USER")
-                .build();
-
-        userRepository.save(user);
-
-        return ResponseEntity.ok("User registered successfully");
+    public ResponseEntity<?> register(@RequestBody @Valid RegisterRequest request) {
+        String response = authService.register(request);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid LoginRequest request) {
-
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.email(), request.password())
-        );
-
-        User user = userRepository.findByEmail(request.email()).orElseThrow();
-
-        if (authentication.isAuthenticated()) {
-            String token = jwtUtils.generateToken(user);
-            return ResponseEntity.ok(token);
-        } else {
-            return ResponseEntity.status(401).body("Invalid Credentials");
-        }
+        String response = authService.login(request);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/me")
