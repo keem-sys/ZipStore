@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -39,8 +38,8 @@ public class PaymentControllerTest {
     @Test
     public void shouldReturnClientSecret() throws Exception {
         PaymentIntent mockIntent = mock(PaymentIntent.class);
-        when(mockIntent.getClientSecret()).thenReturn("sk_test_123");
 
+        given(mockIntent.getClientSecret()).willReturn("sk_test_123");
         given(stripeService.createPaymentIntent(anyLong())).willReturn(mockIntent);
 
         String requestBody = "{\"amount\": 10000}";

@@ -20,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 
 @WebMvcTest(ProductController.class)
@@ -80,7 +81,7 @@ public class ProductControllerTest {
     @Test
     public void shouldReturnProductById() throws Exception {
         Long productId = 1L;
-        given(productService.getProductById(productId)).willReturn(java.util.Optional.of(laptop));
+        given(productService.getProductById(productId)).willReturn(Optional.of(laptop));
 
         mockMvc.perform(get("/api/products/{id}", productId)
                 .accept(MediaType.APPLICATION_JSON))
@@ -92,7 +93,7 @@ public class ProductControllerTest {
     @Test
     public void shouldReturn404WhenProductNotFound() throws Exception {
         Long missingId = 99L;
-        given(productService.getProductById(missingId)).willReturn(java.util.Optional.empty());
+        given(productService.getProductById(missingId)).willReturn(Optional.empty());
 
         mockMvc.perform(get("/api/products/{id}", missingId))
                 .andExpect(status().isNotFound());

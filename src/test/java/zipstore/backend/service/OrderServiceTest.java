@@ -15,11 +15,12 @@ import zipstore.backend.repository.OrderRepository;
 import zipstore.backend.repository.ProductRepository;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
@@ -58,9 +59,9 @@ public class OrderServiceTest {
         OrderItemRequest itemRequest = new OrderItemRequest(103L, 2);
         OrderRequest orderRequest = new OrderRequest(List.of(itemRequest));
 
-        when(productRepository.findById(103L)).thenReturn(java.util.Optional.of(laptop));
-        when(orderRepository.save(org.mockito.ArgumentMatchers.any(Order.class)))
-                .thenAnswer(invocation -> invocation.getArgument(0));
+        given(productRepository.findById(103L)).willReturn(Optional.of(laptop));
+        given(orderRepository.save(any(Order.class))).willAnswer(
+                invocation -> invocation.getArgument(0));
 
         Order savedOrder = orderService.placeOrder(user, orderRequest);
         assertEquals(new BigDecimal("40000.00"), savedOrder.getTotalPrice());
@@ -71,7 +72,7 @@ public class OrderServiceTest {
     @Test
     public void shouldGetUsersOrder() {
         Order fakeOrder = new Order();
-        when(orderRepository.findByUser(user)).thenReturn(List.of(fakeOrder));
+        given(orderRepository.findByUser(user)).willReturn(List.of(fakeOrder));
 
         List<Order> orders = orderService.getUsersOrders(user);
         assertEquals(1, orders.size(), "Should return 1 order");
@@ -82,7 +83,7 @@ public class OrderServiceTest {
         OrderItemRequest orderItemRequest = new OrderItemRequest(103L, 11);
         OrderRequest orderRequest = new OrderRequest(List.of(orderItemRequest));
 
-        when(productRepository.findById(103L)).thenReturn(java.util.Optional.of(laptop));
+        given(productRepository.findById(103L)).willReturn(java.util.Optional.of(laptop));
 
         org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, () -> {
             orderService.placeOrder(user, orderRequest);

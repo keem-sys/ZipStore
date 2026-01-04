@@ -12,10 +12,9 @@ import zipstore.backend.repository.ProductRepository;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
@@ -51,7 +50,7 @@ public class ProductServiceTest {
     @Test
     public void shouldReturnAllProducts() {
         List<Product> mockList = Arrays.asList(laptop, headphone);
-        when(productRepository.findAll()).thenReturn(mockList);
+        given(productRepository.findAll()).willReturn(mockList);
 
         List<Product> products = productService.getAllProducts();
 
