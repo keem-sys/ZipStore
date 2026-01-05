@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -35,7 +34,7 @@ public class DataSeeder {
                         .imageUrl("https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800&auto=format&fit=crop")
                         .price(new BigDecimal("18999.00"))
                         .category("Computers")
-                        .stockQuantity(8)
+                        .stockQuantity(5)
                         .build());
 
                 products.add(Product.builder()
@@ -89,7 +88,7 @@ public class DataSeeder {
                         .imageUrl("https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=800&auto=format&fit=crop")
                         .price(new BigDecimal("7500.00"))
                         .category("Computers")
-                        .stockQuantity(2)
+                        .stockQuantity(4)
                         .build());
 
                 productRepository.saveAll(products);

@@ -13,7 +13,7 @@ public class StripeService {
 
     private final String stripeSecretKey;
 
-    public StripeService(@Value("${STRIPE_SECRET}") String stripeSecretKey) {
+    public StripeService(@Value("${stripe.secret.key}") String stripeSecretKey) {
         this.stripeSecretKey = stripeSecretKey;
     }
 
