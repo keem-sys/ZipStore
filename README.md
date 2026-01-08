@@ -7,7 +7,14 @@
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Stripe](https://img.shields.io/badge/Stripe-626CD9?style=for-the-badge&logo=Stripe&logoColor=white)
 ![Resend](https://img.shields.io/badge/Resend-black?style=for-the-badge&logo=resend&logoColor=white)
-![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white)
+![Koyeb](https://img.shields.io/badge/Koyeb-011627?style=for-the-badge&logo=koyeb&logoColor=white)
+
+ZipStore is a full-stack e-commerce platform. 
+This repository contains the **RESTful API** 
+built with Java and Spring Boot, designed for high performance, 
+stateless authentication, and secure payment processing.
+
+[**Explore the Live Store →**](https://zipstore-shop.vercel.app/)
 
 ---
 
@@ -30,18 +37,17 @@ architecture.
 
 *   **Controller Layer:** Handles HTTP requests and JSON serialization.
 *   **Service Layer:** Contains business logic (Order processing, Payment intent creation).
-*   **Repository Layer:** Manages database interactions using JPA.
-*   **Security:** Stateless authentication using JWT and Bcrypt.
+*   **Repository Layer:** Manages database interactions using Spring Data JPA and Hibernate.
+*   **Security:** Stateless session management using Spring Security 6 and JWT.
 
 ---
 
 ## Key Features
 
-*    Secure Registration and Login with JWT.
+*    Secure Registration and Login with JWT and Bcrypt password encoding.
 *    Browse, search, and view product details.
-*    Persistent cart management for users.
 *    Payment processing integration via **Stripe**.
-*    Users can view past orders and status.
+*    Persistent tracking of user purchases and order status.
 *    Automated contact form and notification emails powered by **Resend**.
 
 ---
@@ -50,32 +56,32 @@ architecture.
 
 | Component      | Technology                  |
 |:---------------|:----------------------------|
-| **Language**   | Java 21                     |
+| **Language**   | Java 21 (LTS)               |
 | **Framework**  | Spring Boot 3+              |
-| **Database**   | PostgreSQL 16               |
+| **Database**   | PostgreSQL (Neon.tech)      |
 | **ORM**        | Hibernate / Spring Data JPA |
 | **Security**   | Spring Security 6 + JJWT    |
 | **Payments**   | Stripe API                  |
 | **Email**      | Resend API                  |
 | **Build Tool** | Maven                       |
-| **Deployment** | Docker & Railway            |
+| **Deployment** | Koyeb                       |
 
 ---
 
 ## Environment Variables
 
 To run this project, you need to configure the following variables in your `application.properties` or 
-your cloud environment (Railway/Docker).
+your cloud dashboard.
 
-| Variable         | Description                    | Example                                       |
-|:-----------------|:-------------------------------|:----------------------------------------------|
-| `DATABASE_URL`   | JDBC Connection String         | `jdbc:postgresql://localhost:5432/zipstoredb` |
-| `DB_USERNAME`    | Database Username              | `postgres`                                    |
-| `DB_PASSWORD`    | Database Password              | `password`                                    |
-| `JWT_SECRET`     | Secret key for signing tokens  | `256-bit-random-string`                       |
-| `STRIPE_SECRET`  | Stripe Secret Key (Test/Live)  | `sk_test_...`                                 |
-| `RESEND_API_KEY` | API Key from Resend            | `re_123...`                                   |
-| `ADMIN_EMAIL`    | Email to receive contact forms | `admin@zipstore.co.za`                        |
+| Variable         | Description                    | Example                                    |
+|:-----------------|:-------------------------------|:-------------------------------------------|
+| `DATABASE_URL`   | JDBC Connection String         | `jdbc:postgresql://ep-id.aws.neon.tech/db` |
+| `DB_USERNAME`    | Database Username              | `neondb_owner`                             |
+| `DB_PASSWORD`    | Database Password              | `••••••••••••`                             |
+| `JWT_SECRET`     | Secret key for signing tokens  | `256-bit-random-string`                    |
+| `STRIPE_SECRET`  | Stripe Secret Key (Test/Live)  | `sk_test_...`                              |
+| `RESEND_API_KEY` | API Key from Resend            | `re_123...`                                |
+| `ADMIN_EMAIL`    | Email to receive contact forms | `admin@zipstore.co.za`                     |
 
 ---
 
@@ -132,12 +138,9 @@ and test the API directly from the browser.
 
 ## Deployment
 
-This project is configured for deployment on **Railway**.
-
-1.  **Database:** A PostgreSQL service spun up on Railway.
-2.  **Backend:** The Spring Boot JAR is built using maven wrapper and deployed as a Docker container.
-3.  **Communication:** The backend communicates with the database 
-using Railway's private network
+*   **Backend:** Hosted on **Koyeb**
+*   **Database:** Serverless PostgreSQL via **Neon.tech**.
+*   **CI/CD:** Automatic deployments triggered on every `git push` to the main branch.
 
 ---
 
